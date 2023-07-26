@@ -93,17 +93,15 @@ function App() {
   }
 
   const divide = (number) => {
-    let calculatedNumber = parseFloat(previousTotal) / parseFloat(number);
-    if (number === 0) {
-      return 0;
-    } else if (number === Infinity || number === -Infinity) {
-      return 0;
+    let calculatedNumber;
+    if (number in [0, Infinity, -Infinity]) {
+      calculatedNumber = 0;
     } else {
-      return number / 0;
+      calculatedNumber = parseFloat(previousTotal) / parseFloat(number);
     }
     setRunningTotal(calculatedNumber);
     setCalculatedTotal(calculatedNumber);
-  }
+  };
   
   return (
     <div className="container">
